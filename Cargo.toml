@@ -1,0 +1,9 @@
+[workspace]
+
+members = [
+    "demo",
+
+]
+
+[profile.release]
+lto = true
