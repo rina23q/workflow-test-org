@@ -58,4 +58,4 @@ jobs:
         with:
           command: release
 #           args: patch --dry-run --skip-publish -vv --no-dev-version
-          args: patch --skip-publish -vv --no-dev-version
+          args: patch --skip-publish -vv --no-dev-version --no-confirm
