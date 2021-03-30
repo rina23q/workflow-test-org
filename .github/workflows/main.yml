@@ -52,4 +52,5 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: release
-          args: patch --dry-run --skip-publish -vv --no-dev-version
+#           args: patch --dry-run --skip-publish -vv --no-dev-version
+          args: patch --skip-publish -vv --no-dev-version
