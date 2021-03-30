@@ -19,7 +19,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        run: |
+      - run: |
           git config --global user.email "you@example.com"
           git config --global user.name "Your Name"
 
