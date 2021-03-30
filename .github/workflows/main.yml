@@ -13,7 +13,7 @@ env:
 
 jobs:
   versioning:
-#     if: github.event.pull_request.merged == 'true'
+    if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-20.04
 
     steps:
@@ -22,33 +22,6 @@ jobs:
       - run: |
           git config --global user.email "version@actions.io"
           git config --global user.name "Versioneer"
-
-#       - name: Enable cache
-#         uses: actions/cache@v2
-#         with:
-#           path: |
-#             ~/.cargo/registry
-#             ~/.cargo/git
-#             target
-#           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-
-#       - name: Install cargo-deb
-#         uses: actions-rs/cargo@v1
-#         with:
-#           command: install
-#           args: cargo-deb
-
-#       - name: Build tedge debian package
-#         uses: actions-rs/cargo@v1
-#         with:
-#           command: deb
-#           args: -p tedge
-
-#       - name: Build tedge_mapper debian package
-#         uses: actions-rs/cargo@v1
-#         with:
-#           command: deb
-#           args: -p tedge_mapper
 
       - name: Install cargo-release
         uses: actions-rs/cargo@v1
