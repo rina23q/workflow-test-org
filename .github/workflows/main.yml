@@ -1,0 +1,48 @@
+name: hosted-post-merge
+
+on:
+  # We need to use pull_request event as only then we can determine the branch it came from and therefore determine what to update patch or minor.
+  pull_request:
+    types: [closed]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  versioning:
+    if: github.event.pull_request.merged == 'true'
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install cargo-deb
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-deb
+
+#       - name: Build tedge debian package
+#         uses: actions-rs/cargo@v1
+#         with:
+#           command: deb
+#           args: -p tedge
+
+#       - name: Build tedge_mapper debian package
+#         uses: actions-rs/cargo@v1
+#         with:
+#           command: deb
+#           args: -p tedge_mapper
+
+      - name: Install cargo-release
+        uses: actions-rs/cargo@v1
+        with:
+          command: install
+          args: cargo-release
+
+      - name: Increment version and tag
+        uses: actions-rs/cargo@v1
+        with:
+          command: release
+          args: patch --dry-run --skip-publish -vv --no-dev-version
