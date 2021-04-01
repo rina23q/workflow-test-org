@@ -1,6 +1,6 @@
 [package]
 name = "demo"
-version = "0.1.31"
+version = "0.1.32"
 authors = ["Your Nam <lukasz.woznicki@softwareag.com>"]
 edition = "2018"
 
@@ -11,3 +11,4 @@ edition = "2018"
 
 [package.metadata.workspaces]
 independent = true
+
