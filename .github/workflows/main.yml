@@ -23,13 +23,15 @@ jobs:
           git config --global user.email "version@actions.io"
           git config --global user.name "Versioneer"
 
-      - uses: actions/cache@v2
+      - name: enable toolchain via github action
+        # https://github.com/actions-rs/toolchain
+        uses: actions-rs/toolchain@v1
         with:
-          path: |
-           ~/.cargo/registry
-           ~/.cargo/git
-           target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          toolchain: stable
+          override: true
+
+      - name: Enable cache
+        uses: Swatinem/rust-cache@v1
 
       - name: Install cargo-release
         uses: actions-rs/cargo@v1
