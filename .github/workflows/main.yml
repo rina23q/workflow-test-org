@@ -36,4 +36,4 @@ jobs:
         with:
           command: release
 #           args: patch --dry-run --skip-publish -vv --no-dev-version
-          args: patch --skip-publish -vv --no-dev-version --no-confirm --token ${{secrets.GITHUB_TOKEN}}
+          args: patch --skip-publish -vv --no-dev-version --no-confirm --sign
