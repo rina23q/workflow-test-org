@@ -24,10 +24,10 @@ jobs:
           git config --global user.name "Versioneer"
 
       - name: enable toolchain via github action
-        # https://github.com/actions-rs/toolchain
         uses: actions-rs/toolchain@v1
         with:
-          toolchain: stable
+          toolchain: 1.51
+          components: cargo
           override: true
 
       - name: Enable cache
