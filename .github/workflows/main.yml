@@ -23,6 +23,8 @@ jobs:
           git config --global user.email "version@actions.io"
           git config --global user.name "Versioneer"
 
+      - uses: Swatinem/rust-cache@v1
+
       - name: Install cargo-release
         uses: actions-rs/cargo@v1
         with:
@@ -32,6 +34,7 @@ jobs:
       - name: Increment version and tag
         uses: actions-rs/cargo@v1
         with:
+          github_token: ${{secrets.GITHUB_TOKEN}}
           command: release
 #           args: patch --dry-run --skip-publish -vv --no-dev-version
           args: patch --skip-publish -vv --no-dev-version --no-confirm
