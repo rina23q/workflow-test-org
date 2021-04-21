@@ -2,6 +2,3 @@ consolidate-commits = true
 disable-publish = true
 no-dev-version = true
 tag-name = "{{prefix}}{{version}}"
-
-post-release-commit-message = "post{{version}}"
-pre-release-commit-message = "pre {{version}}{{prev_version}}"
