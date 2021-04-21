@@ -1,6 +1,6 @@
 [package]
 name = "demo4"
-version = "0.1.14"
+version = "0.1.15"
 authors = ["Your Name <lukasz.woznicki@softwareag.com>"]
 edition = "2018"
 
