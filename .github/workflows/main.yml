@@ -23,8 +23,6 @@ jobs:
           git config --global user.email "version@actions.io"
           git config --global user.name "Versioneer"
 
-      - uses: Swatinem/rust-cache@v1
-      
       - uses: actions/cache@v2
         with:
           path: |
