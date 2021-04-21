@@ -34,7 +34,6 @@ jobs:
       - name: Increment version and tag
         uses: actions-rs/cargo@v1
         with:
-          github_token: ${{secrets.GITHUB_TOKEN}}
           command: release
 #           args: patch --dry-run --skip-publish -vv --no-dev-version
-          args: patch --skip-publish -vv --no-dev-version --no-confirm
+          args: patch --skip-publish -vv --no-dev-version --no-confirm --token ${{secrets.GITHUB_TOKEN}}
