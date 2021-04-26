@@ -11,8 +11,8 @@ on:
   workflow_dispatch:
 
 permissions:
-  actions: read|write|none
-  contents: read|write|none
+  actions: write
+  contents: write
   
 env:
   CARGO_TERM_COLOR: always
