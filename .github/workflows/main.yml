@@ -36,13 +36,7 @@ jobs:
           components: cargo
           override: true
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - uses: Swatinem/rust-cache@v1
 
       - name: Install cargo-release
         uses: actions-rs/cargo@v1
