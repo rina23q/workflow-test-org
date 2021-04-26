@@ -10,9 +10,15 @@ on:
     
   workflow_dispatch:
 
+permissions:
+  actions: read|write|none
+  contents: read|write|none
+  
 env:
   CARGO_TERM_COLOR: always
 
+
+  
 jobs:
   versioning:
 #     if: github.event.pull_request.merged == true
