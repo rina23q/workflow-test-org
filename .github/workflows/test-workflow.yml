@@ -1,25 +1,22 @@
-name: hosted-post-merge
+name: hosted-post-merge-test
 
 on:
   # Only run, when a pull request is merged.
-#   push:
-#    branches: [ main ]
-  # We need to use pull_request event as only then we can determine the branch it came from and therefore determine what to update patch or minor. 
-  pull_request:
-    types: [closed]
-    
+  push:
+    branches: [ main ]
   workflow_dispatch:
-
-permissions: write-all
-
+    branches: [ main ]
+  # We need to use pull_request event as only then we can determine the branch it came from and therefore determine what to update patch or minor. 
+#   pull_request:
+#     types: [closed]
+  
 env:
   CARGO_TERM_COLOR: always
-
 
   
 jobs:
   versioning:
-    if: github.event.pull_request.merged == true
+#     if: github.event.pull_request.merged == true
     runs-on: ubuntu-20.04
 
     steps:
@@ -28,7 +25,6 @@ jobs:
       - run: |
           git config --global user.email "version@actions.io"
           git config --global user.name "Versioneer"
-
       - name: enable toolchain via github action
         uses: actions-rs/toolchain@v1
         with:
@@ -36,7 +32,13 @@ jobs:
           components: cargo
           override: true
 
-      - uses: Swatinem/rust-cache@v1
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
 
       - name: Install cargo-release
         uses: actions-rs/cargo@v1
